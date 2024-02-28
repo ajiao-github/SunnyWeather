@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <debug-overrides>
+        <trust-anchors>
+            <!-- Trust user added CAs while debuggable only -->
+            <certificates
+                overridePins="true"
+                src="user" />
+            <certificates
+                overridePins="true"
+                src="system" />
+        </trust-anchors>
+    </debug-overrides>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
