@@ -10,6 +10,8 @@ import java.lang.RuntimeException
 object Repository {
     // TODO: caoyujiao
     fun searchPlaces(query: String) = liveData(Dispatchers.IO) {
+        var aa = query
+        println("queryqueryquery: ${aa}")
         val result = try {
             val placeResponse = SunnyWeatherNetwork.searchPlaces(query)
             if (placeResponse.status == "ok") {

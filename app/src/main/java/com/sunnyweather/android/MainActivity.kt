@@ -3,6 +3,7 @@ package com.sunnyweather.android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.webkit.WebViewClient
 import com.sunnyweather.android.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,6 +26,10 @@ class MainActivity : AppCompatActivity() {
         bind = ActivityMainBinding.inflate(layoutInflater)
 //        setContentView(R.layout.activity_main)
         setContentView(bind.root)
+
+//        bind.webView.settings.javaScriptEnabled=true
+//        bind.webView.webViewClient = WebViewClient()
+//        bind.webView.loadUrl("https://www.baidu.com")
 
 //        bind.getAppDataBtn.setOnClickListener {
 //            println("请求网络")
@@ -50,6 +55,9 @@ class MainActivity : AppCompatActivity() {
 //                }
 //            })
 //        }
+
+        //
+
 
     }
 

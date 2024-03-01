@@ -20,11 +20,13 @@ object SunnyWeatherNetwork {
             enqueue(object : Callback<T> {
                 override fun onResponse(call: Call<T>, response: Response<T>) {
                     val body = response.body()
+                    println("bodybodybodybodybody: ${body}")
                     if (body != null) continuation.resume(body)
                     else continuation.resumeWithException(RuntimeException("response body is null"))
                 }
 
                 override fun onFailure(call: Call<T>, t: Throwable) {
+                    println("bodybodybodybodybody: 出错了")
                     continuation.resumeWithException(t)
                 }
             })
