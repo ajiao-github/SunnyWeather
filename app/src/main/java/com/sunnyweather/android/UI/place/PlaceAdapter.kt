@@ -1,12 +1,15 @@
 package com.sunnyweather.android.UI.place
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.sunnyweather.android.R
+import com.sunnyweather.android.WeatherActivity
 import com.sunnyweather.android.logic.model.Place
 
 class PlaceAdapter(private val fragment: Fragment, private val placeList: List<Place>): RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
@@ -17,7 +20,14 @@ class PlaceAdapter(private val fragment: Fragment, private val placeList: List<P
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.place_item, parent, false)
-        return ViewHolder(view)
+        val viewHolder = ViewHolder(view)
+        viewHolder.itemView.setOnClickListener {
+            println("点击了点击了")
+            val intent = Intent(parent.context, WeatherActivity::class.java)
+            fragment.startActivity(intent)
+            fragment.activity?.finish()
+        }
+        return viewHolder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
