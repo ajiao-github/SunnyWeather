@@ -51,8 +51,18 @@ class WeatherActivity : AppCompatActivity() {
                 Toast.makeText(this, "无法成功获取天气信息", Toast.LENGTH_SHORT).show()
                 result.exceptionOrNull()?.printStackTrace()
             }
+            bind.swipeRefresh.isRefreshing = false
         })
+        bind.swipeRefresh.setColorSchemeColors(Color.parseColor("#FFFFFF"),Color.parseColor("#000000")) // 设置颜色
+        refreshWeather()
+        bind.swipeRefresh.setOnRefreshListener {
+            refreshWeather()
+        }
+    }
+
+    fun refreshWeather() {
         viewModel.refreshWeather(viewModel.locationLng, viewModel.locationLat)
+        bind.swipeRefresh.isRefreshing = true
     }
 
     private fun showWeatherInfo(weather: Weather) {
